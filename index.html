@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Laundry - University Laundry Management</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section id="login-screen" class="login">
+  <div class="login-card">
+    <h1>Smart Laundry</h1>
+    <p class="muted">University Laundry Management</p>
+    <div class="roles" role="tablist" aria-label="Login as">
+      <button role="tab" data-role="student" class="active" aria-selected="true">Student</button>
+      <button role="tab" data-role="professor" aria-selected="false">Professor</button>
+      <button role="tab" data-role="staff" aria-selected="false">Staff</button>
+    </div>
+    <form id="login-form" novalidate>
+      <div id="name-row" class="hidden"><label for="login-name">Full Name</label><input id="login-name" autocomplete="name" placeholder="Krish B"></div>
+      <label for="login-id" id="login-id-label">Roll Number</label>
+      <input id="login-id" autocomplete="username" placeholder="CH.SC.U4CSE25025">
+      <div id="pw-row"><label for="login-pw">Password</label><input id="login-pw" type="password" autocomplete="current-password"></div>
+      <div id="confirm-row" class="hidden"><label for="login-confirm">Confirm Password</label><input id="login-confirm" type="password" autocomplete="new-password"></div>
+      <p id="login-error" class="error" role="alert"></p>
+      <button id="login-submit" class="btn primary block" type="submit">Login</button>
+      <p id="auth-switch" class="switch"></p>
+    </form>
+    <p id="id-help" class="muted small"></p>
+    <details><summary>Demo credentials</summary>
+      <p class="small">Student: use Sign Up first (needs Firebase), then log in with roll number + password<br>Professor: CH.FA.U4CSE25001 / professor123<br>Staff: STAFF-LAUNDRY-01 / staff123<br>Demo access control only. Not real security.</p></details>
+  </div>
+</section>
+
+<div id="app" class="app hidden">
+  <aside id="sidebar" class="sidebar">
+    <div class="brand">Smart Laundry<small>University Laundry Management</small></div>
+    <nav id="nav" aria-label="Main"></nav>
+  </aside>
+  <div class="content">
+    <header class="top">
+      <button id="menu-btn" class="btn menu" aria-label="Open menu">Menu</button>
+      <div class="crumb"><span class="muted small" id="crumb-role"></span><h2 id="view-title"></h2></div>
+      <div class="gsearch"><input id="gsearch" type="search" placeholder="Search token, student, ID, department, status" aria-label="Global search" autocomplete="off"><div id="sres" class="sres hidden"></div></div>
+      <div class="top-r"><span id="clock" class="clock"></span>
+        <button id="bell" class="btn icon-btn" data-act="go" data-v="notif" aria-label="Notifications"></button>
+        <button id="theme-btn" class="btn" data-act="toggleTheme" aria-label="Toggle theme">Theme</button>
+        <button id="profile-btn" class="btn" data-act="profile" aria-label="Profile menu"></button></div>
+    </header>
+    <main id="view"></main>
+  </div>
+</div>
+
+<dialog id="modal" aria-labelledby="m-title"><h3 id="m-title"></h3><div id="m-body"></div><div class="mact"><button id="m-cancel" class="btn">Cancel</button><button id="m-ok" class="btn primary">Confirm</button></div></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
